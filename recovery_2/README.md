@@ -1,8 +1,5 @@
-# N2-flight-software
+# flight-software
 ## Introduction
-This repository contains code used for flight software for Nakuja Rocket N2. The following description provides a detailed
-description of program flow, project structure, library dependencies and/or any other necessary documentation needed to run this 
-code successfully.
 
 ## Project structure
 ***
