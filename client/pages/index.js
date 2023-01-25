@@ -10,8 +10,9 @@ let socket;
 
 const Home = () => {
 	
+	const [ignitionStatus, setIgnitionStatus] = useState(false);
 	const [ejectionStatus, setEjectionStatus] = useState(false);
-
+	const [ejectionStatus2, setEjectionStatus2] = useState(false);
 
 	useEffect(() => {
 		const socketInitializer = async () => {
@@ -33,12 +34,19 @@ const Home = () => {
 		socketInitializer();
 	}, []);
 	
-
+    const toggleIgnition = () => {
+		socket.emit('ignite', !ignitionStatus ? 'on' : 'off');
+		setIgnitionStatus(!ignitionStatus);
+	};
 	const toggleEjection = () => {
 		socket.emit('eject', !ejectionStatus ? 'on' : 'off');
 		setEjectionStatus(!ejectionStatus);
 	};
 
+	const toggleEjection2 = () => {
+		socket.emit('eject',!ejectionStatus2 ? 'on' : 'off');
+		setEjectionStatus2(!ejectionStatus2);  
+	};
 
 	return (
 		<div className={styles.container}>
@@ -65,15 +73,15 @@ const Home = () => {
 					}}
 				>
 				
-					{/* <button onClick={toggleIgnition}>
+					<button onClick={toggleIgnition}>
 						{ignitionStatus ? 'Stop Ignition' : 'Start Ignition'}
-					</button> */}
+					</button>
 					<button onClick={toggleEjection}>
 						{ejectionStatus ? 'Stop Ejection' : 'Start Ejection'}
 					</button>
-					 {/* <button onClick={toggleEjection2}>
+					 <button onClick={toggleEjection2}>
 						{ejectionStatus2 ? 'Stop Ejection2' : 'Start Ejection2'}
-					</button> */}
+					</button>
 				</div>
 
 				<div
